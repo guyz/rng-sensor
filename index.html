@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <script>
+    var salt, ws;
+    window.onload = function () {
+        salt = _getRandomNumber();
+
+        if ("WebSocket" in window) {
+            ws = new WebSocket("ws://localhost:8888/"+salt+_getRandomNumber());
+            ws.onopen = function () {
+                // ws.send("rnd");
+                console.log('connection opened');
+            };
+            ws.onmessage = function (event) {
+                var index = parseInt(event.data);
+                alert(pages[index][0]);
+                window.location = prefix + pages[index][1];
+            };
+            ws.onclose = function () {
+                console.log('connection closed');
+            };
+        } else {
+            alert("WebSockets not supported");
+        }
+
+    }
+
+    function _getRandomNumber (num) {
+                    var retVal = "", 
+                            charTable = "0123456789abcdefghjkmnpqrstvwxyzABCDEFGHJKMNPQRSTVWXYZ";
+                    num = num || 16;
+                    for (i = 0; i < num; i++) {
+                        retVal += charTable[Math.floor(Math.random()*53)]
+                    }
+                    return retVal;
+    }
+
+    var prefix = "http://fab.cba.mit.edu/classes/863.14/people/"
+
+    var pages = new Array(
+    ["Madeleine Abromowitz","madeleine_abromowitz/index.html"],
+    ["Matthew Arbesfeld","matthew_arbesfeld/index.html"],
+    ["Ines Ariza","ines_ariza/index.html"],
+    ["Jessica Artiles","jessica_artiles/index.html"],
+    ["Jonathan Bobrow","jonathan_bobrow/index.html"],
+    ["Oliver Bucklin","oliver_bucklin/index.html"],
+    ["Shaunta Butler","shaunta_butler/index.html"],
+    ["Dan Chen","dan_chen/index.html"],
+    ["Juliana Cherston","juliana_cherston/index.html"],
+    ["Vincent Chow","vincent_chow/index.html"],
+    ["Jefferson Clayton","jefferson_clayton/index.html"],
+    ["Bianca Datta","bianca_datta/index.html"],
+    ["Sarah Edris","sarah_edris/index.html"],
+    ["Jose Estrada","jose_estrada/index.html"],
+    ["Sara Falcone","sara_falcone/index.html"],
+    ["Tim Fallon","tim_fallon/index.html"],
+    ["Jasmine Florentine","jasmine_florentine/index.html"],
+    ["Merav Gazit","merav_gazit/index.html"],
+    ["Amanda Ghassaei","amanda_ghassaei/index.html"],
+    ["Dana Gretton","dana_gretton/index.html"],
+    ["Anders Haggman","anders_haggman/index.html"],
+    ["Bianca Homberg","bianca_homberg/index.html"],
+    ["Alexis Hope","alexis_hope/index.html"],
+    ["Chikara Inamura","chikara_inamura/index.html"],
+    ["Benjamin Jenett","benjamin_jenett/index.html"],
+    ["Sarah Jessop","sarah_jessop/index.html"],
+    ["Emilee Johnson","emilee_johnson/index.html"],
+    ["Holly Josephs","holly_josephs/index.html"],
+    ["Thrasyvoulos Karydis","thrasyvoulos_karydis/index.html"],
+    ["Kunho Kim","kunho_kim/index.html"],
+    ["Alan Kwan","alan_kwan/index.html"],
+    ["Sang Leigh","sang_leigh/index.html"],
+    ["Richard Li","richard_li/index.html"],
+    ["Desmond Lim","desmond_lim/index.html"],
+    ["Dimitrios Mairopoulos","dimitrios_mairopoulos/index.html"],
+    ["Andrew Mao","andrew_mao/index.html"],
+    ["Tomoaki Masuda","tomoaki_masuda/index.html"],
+    ["Nathan Melenbrink","nathan_melenbrink/index.html"],
+    ["Kate Mytty","kate_mytty/index.html"],
+    ["Palash Nandy","palash_nandy/index.html"],
+    ["Rachel Nations","rachel_nations/index.html"],
+    ["Juliana Nazare","juliana_nazare/index.html"],
+    ["Andrzej Nowojewski","andrzej_nowojewski/index.html"],
+    ["Keiichi Onishi","keiichi_onishi/index.html"],
+    ["Sun Qiuying","sun_qiuying/index.html"],
+    ["Tiandra Ray","tiandra_ray/index.html"],
+    ["Semon Rezchikov","semon_rezchikov/index.html"],
+    ["Sean Ricks","sean_ricks/index.html"],
+    ["Daniel Rosenberg","daniel_rosenberg/index.html"],
+    ["Alexis Sablone","alexis_sablone/index.html"],
+    ["Nazmus Saquib","nazmus_saquib/index.html"],
+    ["Shruthi Saravanan","shruthi_saravanan/index.html"],
+    ["Zach Seibold","zach_seibold/index.html"],
+    ["Austin Smith","austin_smith/index.html"],
+    ["Morgen Sullivan","morgen_sullivan/index.html"],
+    ["Katherine Taylor","katherine_taylor/index.html"],
+    ["Christian Teissl","christian_teissl/index.html"],
+    ["Dmitry Ter-Ovanesyan","dmitry_ter-ovanesyan/index.html"],
+    ["Ling-Li Tseng","ling-li_tseng/index.html"],
+    ["Christos Tzamos","christos_tzamos/index.html"],
+    ["Morris Vanegas","morris_vanegas/index.html"],
+    ["Tout Wang","tout_wang/index.html"],
+    ["Tomer Weller","tomer_weller/index.html"],
+    ["Sarah Zhang","sarah_zhang/index.html"],
+    ["Guy Zyskind","guy_zyskind/index.html"])
+    
+    function random_page() {
+        ws.send(pages.length);
+    }
+
+    </script>
+    <meta charset="UTF-8">
+    <title>
+    </title>
+    
+    <style>
+        a {text-decoration: none}
+    </style>
+
+</head>
+
+<body link="black" vlink="black" alink="black">
+<font face="bitstream vera sans,arial,helvetica,sans-serif">
+<center>
+MAS.863/4.140<br>
+<i>How To Make (almost) Anything</i><br>
+2014<br>
+</center>
+
+<p>
+
+</p><div style="margin-left:2.5%">
+
+<b>Students</b>
+
+<p>
+
+</p><div style="margin-left:2.5%">
+
+<a href="javascript:random_page()">random page</a><br>
+<script type="text/javascript">
+for (i = 0; i < pages.length; ++i) {
+   document.write("<a href="+pages[i][1]+">"+pages[i][0]+"</a><br>")
+   }
+</script>
+
+</div>
+
+<p>
+
+<b><a href=sections.html>Sections</a></b>
+
+</p><p>
+
+<b>Staff</b>
+
+</p><p>
+
+</p><div style="margin-left:2.5%">
+
+Seth Avecilla<br>
+Sam Calisch<br>
+Matt Carney<br>
+Christina Chase<br>
+James Coleman<br>
+David Costanza<br>
+John Difrancesco<br>
+<a href=http://dm.risd.edu/blog/people/kelly-dobson/>Kelly Dobson</a><br>
+Jean-Francois Duval<br>
+<a href=matted>Matt Edwards</a><br>
+Danela Faas<br>
+Charles Fracchia<br>
+Neil Gershenfeld<br>
+Jonathan Grinham<br>
+Charles Guan<br>
+Robert Hart<br>
+Noah Jakimo<br>
+William Langford<br>
+Justin Lavallee<br>
+<a href="http://fab.cba.mit.edu/classes/863.13/people/amir/index.html">Amir Lazarovich</a><br>
+Taylor Levy<br>
+Tom Lutz<br>
+Adam Marblestone<br>
+Carrie McKnelly<br>
+Philippa Mothersill<br>
+Dan Novy<br>
+Jennifer O'Brien<br>
+Athina Papadopoulou<br>
+Prashant Patil<br>
+William Patrick<br>
+Nadya Peek<br>
+Diego Pinochet<br>
+David Robert<br>
+David Sengeh<br>
+Vivek Sivathanu<br>
+Michael Skuhersky<br>
+Ken Stone<br>
+Skylar Tibbits<br>
+<a href=https://www.youtube.com/results?search_query=didi+vardi>Didi Vardi</a><br>
+Rachel Vroman<br>
+Ryan Walsh<br>
+Che-Wei Wang<br>
+Robert White<br>
+Anya Yermakova<br>
+
+</div>
+
+<script type="text/javascript">
+function mouse_over(evt) {
+    evt.target.style.color = '#000099'
+    evt.target.style.fontWeight = "bold"
+    }
+function mouse_out(evt) {
+    evt.target.style.color = '#000000'
+    evt.target.style.fontWeight = "normal"
+    }
+var anchors = document.getElementsByTagName("a");
+for (var i = 0; i < anchors.length; i++) {
+   anchors[i].onmouseover = mouse_over
+   anchors[i].onmouseout = mouse_out
+    }
+</script>
+
+</p></div></font></body></html>
